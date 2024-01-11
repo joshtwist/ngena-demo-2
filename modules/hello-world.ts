@@ -1,21 +1,20 @@
-import { ZuploContext, ZuploRequest } from "@zuplo/runtime";
+import { HttpProblems, ZuploContext, ZuploRequest } from "@zuplo/runtime";
+
+const lookup = {
+  "A": "https://www.example.com",
+  "B": "https://echo.zuplo.io"
+}
 
 export default async function (request: ZuploRequest, context: ZuploContext) {
-  /**
-   * Use the log property on context to enjoy
-   * logging magic when testing your API.
-   */
-  context.log.info(`Hi, from inside your zup!`);
+  
+  const route = request.query.route;
 
-  /**
-   * If you want to proxy an API, you can simply
-   * return the content of a fetch. Try it by
-   * uncommenting the line below.
-   */
-  // return fetch('http://www.example.com/');
+  if (!route)
+  {
+    return HttpProblems.badRequest(request, context);
+  }
 
-  /**
-   * In this example, we're just going to return some content.
-   */
-  return "What zup?";
+  const url = lookup[route];
+
+  return fetch(url);
 }
