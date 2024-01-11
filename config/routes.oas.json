@@ -31,6 +31,27 @@
         },
         "operationId": "357fd154-01a7-4d4e-b576-6d6c8ed54341"
       }
+    },
+    "/smart-router": {
+      "x-zuplo-path": {
+        "pathMode": "open-api"
+      },
+      "get": {
+        "summary": "New Route",
+        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "export": "default",
+            "module": "$import(./modules/hello-world)",
+            "options": {}
+          },
+          "policies": {
+            "inbound": []
+          }
+        },
+        "operationId": "b1db4e8f-bedb-4ed3-a103-8d0f70d49bb6"
+      }
     }
   }
 }
