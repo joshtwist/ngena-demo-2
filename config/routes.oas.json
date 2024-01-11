@@ -1,0 +1,36 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My Zuplo API"
+  },
+  "paths": {
+    "/v1/todos": {
+      "x-zuplo-path": {
+        "pathMode": "open-api"
+      },
+      "get": {
+        "summary": "Get all todos",
+        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "export": "urlForwardHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "baseUrl": "https://jsonplaceholder.typicode.com/todos"
+            }
+          },
+          "policies": {
+            "inbound": [
+              "api-key-inbound",
+              "custom-code-inbound",
+              "rate-limit-inbound"
+            ]
+          }
+        },
+        "operationId": "357fd154-01a7-4d4e-b576-6d6c8ed54341"
+      }
+    }
+  }
+}
